@@ -1,0 +1,35 @@
+{% extends "detailslayout.html" %}
+{% block content %}
+<h1 class="text-center text-success" style="margin-top: 80px;"> Show Student Details</h1>
+<div class="container">
+<div class="table-responsive">
+<table class="table table-bordered table-striped table-dark mt-3">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>address</th>
+            <th>age</th>
+            <th>joining date</th>
+            <th>Course Name</th>
+            <th>Course Fee</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for s in student %}
+        <tr>
+            <td>{{s.studentname}}</td>
+            <td>{{s.address}}</td>
+            <td>{{s.age}}</td>
+            <td>{{s.date|date:'Y-m-d'}}</td>
+            <td>{{s.course.coursename}}</td>
+            <td>{{s.course.coursefee}}</td>
+            <td><a href="{% url 'editpage' s.id %}" class="btn btn-success text-light">Edit</a>
+            <a href="{% url 'delete' s.id %}" class="btn btn-danger text-light">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
